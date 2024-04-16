@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>EmergiBot</title>
+    <style>
+        body {
+            background-image: url('/bg.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+        .content {
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+
+</head>
+<body>
+    
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>EmergiBot</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="home.html" class="link active">Home</a></li>
+                <li><a href="service.html" class="link">Services</a></li>
+                <li><a href="about.html" class="link">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="switchForm('login')">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="switchForm('register')">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+
+        <div class="login-container" id="login">
+            <div class="top">
+                <header>Login</header>
+            </div>
+            <div class="input-box">
+                <input type="text" id="loginUsername" class="input-field" placeholder="Username or Email">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="loginPassword" class="input-field" placeholder="Password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign In" onclick="login()">
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <span>Don't have an account? <a href="#" onclick="switchForm('register')">Sign Up</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <header>Sign Up</header>
+            </div>
+            <div class="two-forms">
+                <div class="input-box">
+                    <input type="text" id="firstname" class="input-field" placeholder="Firstname">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="lastname" class="input-field" placeholder="Lastname">
+                    <i class="bx bx-user"></i>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="email" class="input-field" placeholder="Email">
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" class="input-field" placeholder="Password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Register" onclick="register()">
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <span>Have an account? <a href="#" onclick="switchForm('login')">Login</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+
+<script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if(i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+    function switchForm(formName) {
+        var loginForm = document.getElementById("login");
+        var registerForm = document.getElementById("register");
+        var loginBtn = document.getElementById("loginBtn");
+        var registerBtn = document.getElementById("registerBtn");
+
+        if (formName === "login") {
+            loginForm.style.left = "4px";
+            registerForm.style.right = "-520px";
+            loginBtn.className += " white-btn";
+            registerBtn.className = "btn";
+            loginForm.style.opacity = 1;
+            registerForm.style.opacity = 0;
+        } else if (formName === "register") {
+            loginForm.style.left = "-510px";
+            registerForm.style.right = "5px";
+            loginBtn.className = "btn";
+            registerBtn.className += " white-btn";
+            loginForm.style.opacity = 0;
+            registerForm.style.opacity = 1;
+        }
+    }
+
+    function login() {
+        var username = document.getElementById("loginUsername").value;
+        var password = document.getElementById("loginPassword").value;
+
+        if (username.trim() === "") {
+            alert("Please enter a username or email.");
+            return;
+        }
+        if (password.trim() === "") {
+            alert("Please enter a password.");
+            return;
+        }
+
+        
+        alert("Logging Sucessfully.");
+    }
+
+    function register() {
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+     
+        if (firstname.trim() === "" || lastname.trim() === "") {
+            alert("Please enter your first and last name.");
+            return;
+        }
+        if (email.trim() === "") {
+            alert("Please enter your email.");
+            return;
+        }
+        if (password.trim() === "") {
+            alert("Please enter a password.");
+            return;
+        }
+
+       
+        alert("Register Successfully.");
+    }
+</script>
+
+</body>
+</html>
